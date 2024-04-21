@@ -1,0 +1,961 @@
+<ContentNavigationDrawer>:
+    orientation: "vertical"
+    padding: "0dp", "220dp"
+    spacing: "30dp"
+    md_bg_color: 1,1,1,1
+    ScrollView:
+        MDList:
+            OneLineListItem:
+                text: "Help"
+                on_release: app.help()
+            OneLineListItem:
+                text: "About"
+                on_release: app.openAbout()
+            OneLineListItem:
+                text: "Settings"
+                on_release: app.settings()
+            OneLineListItem:
+                text: "Quit"
+                on_release: app.stop()
+            
+
+
+MDBoxLayout:
+    orientation: "vertical"
+    md_bg_color: 190, 191, 231, 0.36
+    line_color: 0, 0, 1, 1
+    MDScreenManager:
+        id: SM
+        MDScreen:
+            name: "main"
+            #md-bg-color: 190, 191, 231, 0.36
+            #FitImage:
+                #source: 'wall.png'
+            MDTopAppBar:
+                title: "READNOW made by Dream students"
+                pos_hint: {"top":1}
+                left_action_items: [['menu', lambda x: NVD.set_state("open")]]
+                elevation: 0
+            MDRectangleFlatButton:
+                id: elJu
+                text: "[b]Elementary & Junior\nstudent[/b]"
+                text_color: "orange"
+                bold: True
+                font_size: "20sp"
+                line_color: "orange"
+                bold: True
+                theme_text_color: "Custom"
+                pos_hint: {"center_x":.5,"center_y":.7}
+                on_release: app.jumpToScreen("elJuS")
+            MDRectangleFlatButton:
+                id: hiS
+                text: "[b]Highschool student[/b]"
+                text_color: "orange"
+                bold: True
+                font_size: "20sp"
+                line_color: "orange"
+                bold: True
+                theme_text_color: "Custom"
+                pos_hint: {"center_x":.5,"center_y":.6}
+                on_release: app.jumpToScreen("hiS")
+            MDRectangleFlatButton:
+                id: naHi
+                text: "[b]Natural Highschool\nstudent[/b]"
+                line_color: "orange"
+                bold: True
+                font_size: "20sp"
+                text_color: "orange"
+                bold: True
+                theme_text_color: "Custom"
+                pos_hint: {"center_x":.5,"center_y":.5}
+                on_release: app.jumpToScreen("naHiS")
+            MDRectangleFlatButton:
+                id: soHi
+                text: "[b]Social Highschool\nstudent[/b]"
+                line_color: "orange"
+                bold: True
+                font_size: "20sp"
+                text_color: "orange"
+                bold: True
+                theme_text_color: "Custom"
+                pos_hint: {"center_x":.5,"center_y":.38}
+                on_release: app.jumpToScreen("soHiS")
+            MDRectangleFlatButton:
+                id: cu
+                text: "[b]Customize your studies[/b]"
+                line_color: "orange"
+                bold: True
+                font_size: "20sp"
+                text_color: "orange"
+                bold: True
+                theme_text_color: "Custom"
+                pos_hint: {"center_x":.5,"center_y":.28}
+                on_release: app.jumpToScreen("cuS")
+            MDNavigationLayout:
+                MDNavigationDrawer:
+                    id: NVD
+                    ContentNavigationDrawer:
+#Screens for the student buttons to load
+        MDScreen:
+            name: "elJuS"
+            #FitImage:
+                #source: 'wall3.png'
+            MDTopAppBar:
+                pos_hint: {"top":1}
+                elevation: 0
+                left_action_items:[["arrow-left", lambda x: app.backButton()]]
+            MDIconButton:
+                id: pausedIcon0
+                icon: "arrow-right-drop-circle-outline"
+#                     "pause-circle-outline"
+                icon_size: "40sp"
+                pos_hint: {"top":1, "center_x": .5}
+                on_release: app.pauseButton(0,8)
+            MDIconButton:
+                icon: "reload"
+                icon_size: "40sp"
+                pos_hint: {"top":1, "center_x": .94}
+                on_release: app.reloadSliders(0,8,60)
+            MDGridLayout:
+                cols: 2
+                size_hint: (.9,.9)
+                pos_hint: {"center_x": .5}
+
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Science"     
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: eScience
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Math"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: eMath
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Art"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: eArt
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "social\nstudies"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: eSocialStudies
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Music"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: eMusic
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Sport"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: eSport
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "English"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: eEnglish
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Foreign\nLanguages"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: eForeignLanguage
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+        MDScreen:
+            name: "hiS"
+            #FitImage:
+                #source: 'wall3.png'
+            MDTopAppBar:
+                pos_hint: {"top":1}
+                elevation: 0
+                left_action_items:[["arrow-left", lambda x: app.backButton()]]
+            # MDIconButton:
+            #     icon: "backspace-outline"
+            #     icon_size: "32sp"
+            #     pos_hint: {"top":1}
+            #     on_release: app.backButton()
+            MDIconButton:
+                id: pausedIcon1
+                icon: "arrow-right-drop-circle-outline"
+#                     "pause-circle-outline"
+                icon_size: "40sp"
+                pos_hint: {"top":1, "center_x": .5}
+                on_release: app.pauseButton(1,11)
+            MDIconButton:
+                icon: "reload"
+                icon_size: "40sp"
+                pos_hint: {"top":1, "center_x": .94}
+                on_release: app.reloadSliders(1,11,60)
+            MDGridLayout:
+                cols: 2
+                size_hint: (.9,.9)
+                pos_hint: {"center_x": .5}
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Biology"     
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hBiology
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Physics"     
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hPhysics
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Chemistry"     
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hChemistry
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Math"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hMath
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Art"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hArt
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Geography"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hGeography
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "History"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hHistory
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Civics"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hCivics
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Sport"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hSport
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "English"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hEnglish
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Foreign\nLanguages"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: hForeignLanguage
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+        MDScreen:
+            name: "naHiS"
+            #FitImage:
+                #source: 'wall3.png'
+            MDTopAppBar:
+                pos_hint: {"top":1}
+                elevation: 0
+                left_action_items:[["arrow-left", lambda x: app.backButton()]]
+            # MDIconButton:
+            #     icon: "backspace-outline"
+            #     icon_size: "32sp"
+            #     pos_hint: {"top":1}
+            #     on_release: app.backButton()
+            MDIconButton:
+                id: pausedIcon2
+                icon: "arrow-right-drop-circle-outline"
+#                     "pause-circle-outline"
+                icon_size: "40sp"
+                pos_hint: {"top":1, "center_x": .5}
+                on_release: app.pauseButton(2,10)
+            MDIconButton:
+                icon: "reload"
+                icon_size: "40sp"
+                pos_hint: {"top":1, "center_x": .94}
+                on_release: app.reloadSliders(2,10,60)
+            MDGridLayout:
+                cols: 2
+                size_hint: (.9,.9)
+                pos_hint: {"center_x": .5}
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Biology"     
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nBiology
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Math"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nMath
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Chemistry"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nChemistry
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Earth\nScience"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nEarthScience
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Environment\nScience"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nEnvironmentScience
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Sport"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nSport
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Foreign\nLanguages"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nForeignLanguages
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Physics"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nPhyics
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Ict"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nIct
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "English"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: nEnglish
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+        MDScreen:
+            name: "soHiS"
+            #FitImage:
+                #source: 'wall3.png'
+            MDTopAppBar:
+                pos_hint: {"top":1}
+                elevation: 0
+                left_action_items:[["arrow-left", lambda x: app.backButton()]]
+            MDIconButton:
+                id: pausedIcon3
+                icon: "arrow-right-drop-circle-outline"
+#                     "pause-circle-outline"
+                icon_size: "40sp"
+                pos_hint: {"top":1, "center_x": .5}
+                on_release: app.pauseButton(3,11)
+            MDIconButton:
+                icon: "reload"
+                icon_size: "40sp"
+                pos_hint: {"top":1, "center_x": .94}
+                on_release: app.reloadSliders(3,11,60)
+            MDGridLayout:
+                cols: 2
+                size_hint: (.9,.9)
+                pos_hint: {"center_x": .5}
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Anthropology\nSociology"     
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sAnthropologySociology
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Math"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sMath
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Geography"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sGeography
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Economics"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sEconomics
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Government &\nCivics"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sGovernmentCivics
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Sport"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sSport
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "English"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sEnglish
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "History"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sHistory
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Foreign\nLanguages"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sForeignLanguages
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Psychology"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sPhychology
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+                MDLabel:
+                    font_name: 'Nordhin.ttf'
+                    font_size: 20
+                    text: "Current\nEvents"
+                    size_hint: 0.1, 1
+                    color: "orange"
+                    bold: True
+                MDSlider:
+                    id: sCurrentEvents
+                    value: 60
+                    max: 60
+                    hint_bg_color: "orange"
+                    bold: True
+                    hint_text_color: "white"
+                    hint_radius: [6, 0, 6, 0]
+                    size_hint_x: 0.2
+        MDScreen:
+            name: "cuS"
+            #FitImage:
+                #source: 'wall3.png'
+            MDTopAppBar:
+                pos_hint: {"top":1}
+                elevation: 0
+                left_action_items:[["arrow-left", lambda x: app.backButton()]]
+            MDLabel:
+                font_name: 'Nordhin.ttf'
+                font_size: 20
+                text: '''ngl am not planning to release any updates but if it get some downloads or i get enough support i will definitly try my best to update.'''
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint: .9, .4
+                color: "yellow"
+                #font_size: 30
+                bold: True
+        MDScreen:
+            name: "about"
+            #FitImage:
+                #source: 'wall.png'
+            MDTopAppBar:
+                pos_hint: {"top":1}
+                elevation: 0
+                left_action_items:[["arrow-left", lambda x: app.backButton()]]
+            MDLabel:
+                font_name: 'Nordhin.ttf'
+                font_size: 20
+                text: '''This app is made by Dream srudents.It is a timer that helps you manage your time properly and give the right amount of time for the subject you are trying to study.This app is specially made for those students who strugle giving the right amount of time for the subjects their eager to study.Hope you Enjoy!!!'''
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint: .9, .4
+                color: "orange"
+                #font_size: 20
+                bold: True
+            # MDRaisedButton:
+            #     text: "youtube"
+            #     md_bg_color: "red"
+            #     pos_hint: {"center_x":.2, "center_y": 0.05}
+            #     on_release: app.openYt()
+            # MDRaisedButton:
+            #     text: "instagram"
+            #     md_bg_color: "red"
+            #     pos_hint: {"center_x":.5, "center_y": 0.05}
+            #     on_release: app.openIg()
+            # MDRaisedButton:
+            #     text: "TikTok"
+            #     md_bg_color: "red"
+            #     pos_hint: {"center_x":.8, "center_y": 0.05}
+            #     on_release: app.openTt()
+        MDScreen:
+            name: "settings"
+            #FitImage:
+                #source: 'wall.png'
+            MDTopAppBar:
+                pos_hint: {"top":1}
+                elevation: 0
+                left_action_items:[["arrow-left", lambda x: app.backButton()]]
+            MDLabel:
+                font_name: 'Nordhin.ttf'
+                font_size: 20
+                text: "Set your study time in seconds (the Default is 60 seconds)"
+                color: "orange"
+                #font_size: 20
+                bold: True
+                pos_hint: {"center_x": .5, "center_y": .6}
+                size_hint: .8,.3
+            MDTextFieldRect:
+                id: minL
+                size_hint: .8, None
+                hint_text: "seconds"
+                height: "30dp"
+                pos_hint: {"center_x": .5, "center_y": .5}
+            MDRectangleFlatButton:
+                text: "change"
+                #font_size: 20
+                bold: True
+                theme_text_color: "Custom"
+                pos_hint: {"center_x": .5,"center_y": .4}
+                text_color: "orange"
+                line_color: "red"
+                on_release: app.changeMin()
+            MDLabel:
+                font_name: 'Nordhin.ttf'
+                font_size: 20
+                id: ErrorL
+                text: ""
+                color: "orange"
+                #font_size: 20
+                bold: True
+                pos_hint: {"center_x": .55, "center_y": .3}
+        MDScreen:
+            name: "help"
+            #FitImage:
+                #source: 'wall.png'
+            MDTopAppBar:
+                pos_hint: {"top":1}
+                elevation: 0
+                left_action_items:[["arrow-left", lambda x: app.backButton()]]
+            # MDLabel
+            #     text: '''የፈለጋችሁትን የክፍል ደረጃ በመጫን ከዛም ፕለይ በተንዋን በመንካት መጀመር ትችለላችሁ። በ Default 60 ደቂቃ ላይ ስላለ ካልተመቻችሁ setting ውስጥ ገብታችሁ ማስተካከል ትችላላችሁ።'''
+            #     pos_hint: {"center_x":.5,"center_y":.74}
+            #     size_hint: .9, .4
+            #     color: "yellow"
+            #     font_name: 'amhFont'
+            #     font_size: 20
+            #     bold: True
+            MDLabel:
+                font_name: 'Nordhin.ttf'
+                font_size: 20
+                text: '''you can just chooce what grade you are and then press the play button to begin the timer which will begin the timer for each subject one by one individually after one finishes then preceding to the next. it is set to 60 seconds per subject by default but you can change it in the settings.'''
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint: .9, .8
+                color: "orange"
+                #font_size: 20
+                bold: True
+            
